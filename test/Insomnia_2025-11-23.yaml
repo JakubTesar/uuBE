@@ -1,0 +1,433 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Shopping List API
+meta:
+  id: wrk_8e2db9cd9bec4191924d273b35e0e1f8
+  created: 1763904433787
+  modified: 1763904433787
+  description: ""
+collection:
+  - name: Auth
+    meta:
+      id: fld_d8bcaa8f2b0c4851ae9ff1225a18eba7
+      created: 1763904433791
+      modified: 1763911021842
+      sortKey: -1763904433791
+      description: ""
+    children:
+      - url: "{{ base_url }}/auth/login"
+        name: Login
+        meta:
+          id: req_f756f3d9f8d143289538fdb1dbd5a9c0
+          created: 1763904433792
+          modified: 1763910450383
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433792
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "epicUser@blabla.cz",
+              "password": "password"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/auth/register"
+        name: Register
+        meta:
+          id: req_7d66a736e4bc49e395a5d0e508b6f852
+          created: 1763905253576
+          modified: 1763913914688
+          isPrivate: false
+          description: ""
+          sortKey: -1763905253576
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "name": "pepa",
+            	"email": "pepa@l.cz",
+              "password": "password"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    headers:
+      - name: Content-Type
+        value: application/json
+        description: ""
+        disabled: false
+  - name: Shopping Lists
+    meta:
+      id: fld_32bdf996b0684b7884c255b26f4467ef
+      created: 1763904433793
+      modified: 1763911020080
+      sortKey: -1763904433793
+      description: ""
+    children:
+      - url: "{{ base_url }}/shoppingList"
+        name: shoppingList/create
+        meta:
+          id: req_7deb0fd9d68f425a90da72e426a8997f
+          created: 1763904433794
+          modified: 1763910571545
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433794
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{ "name": "Groceries" }'
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+          - name: Content-Type
+            value: application/json
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID"
+        name: shoppingList/get
+        meta:
+          id: req_6c39358b0d534269a5d2be25d0105f26
+          created: 1763904433795
+          modified: 1763915208145
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433795
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingLists"
+        name: shoppingList/listMine
+        meta:
+          id: req_c0d11c1fe1004e77a9441e6a021cf9e6
+          created: 1763904433795
+          modified: 1763904433795
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433795
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID"
+        name: shoppingList/update
+        meta:
+          id: req_c607fdd37c214c55b653b046d77ec49f
+          created: 1763904433796
+          modified: 1763915203925
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433796
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{ "name": "Updated Name" }'
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID"
+        name: shoppingList/delete
+        meta:
+          id: req_518d7edf4d844f4ea39dc43cdb03b1cf
+          created: 1763904433797
+          modified: 1763915201293
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433797
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    headers:
+      - name: Content-Type
+        value: application/json
+        description: ""
+        disabled: false
+  - name: Membership
+    meta:
+      id: fld_364a2bfbcb5f48aa95d783e37fac8328
+      created: 1763904433798
+      modified: 1763915240590
+      sortKey: -1763904433798
+      description: ""
+    children:
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/members/USER_ID"
+        name: membership/invite
+        meta:
+          id: req_01cd4920ace048d7bd4cb3db49fadcf9
+          created: 1763904433799
+          modified: 1763915250923
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433799
+        method: POST
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/members/USER_ID"
+        name: membership/remove
+        meta:
+          id: req_d2582444f9834486b77bdd7345d4b8a5
+          created: 1763904433799
+          modified: 1763915122621
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433799
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/members"
+        name: membership/list
+        meta:
+          id: req_bc41a554bccf40cfb145454205f0fa67
+          created: 1763904433800
+          modified: 1763915085865
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433800
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    headers:
+      - name: Content-Type
+        value: application/json
+        description: ""
+        disabled: false
+  - name: Items
+    meta:
+      id: fld_167cff1cb2c04ac5bcdfc43050d8d8ae
+      created: 1763904433801
+      modified: 1763911025315
+      sortKey: -1763904433801
+      description: ""
+    children:
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/items"
+        name: item/add
+        meta:
+          id: req_7f627095705f4f50885ee4f5238d73a8
+          created: 1763904433801
+          modified: 1763915065537
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433801
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{ "name": "Milk" }'
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+          - name: Content-Type
+            value: application/json
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/items/ITEM_ID"
+        name: item/update
+        meta:
+          id: req_0870701ad4714690b9380e795be068c6
+          created: 1763904433802
+          modified: 1763915076504
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433802
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{ "name": "Milk", "isDone": false }'
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/items/ITEM_ID"
+        name: item/delete
+        meta:
+          id: req_ae469662ba02461ab446c810846baa59
+          created: 1763904433803
+          modified: 1763915061780
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433803
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/items/ITEM_ID/check"
+        name: item/check
+        meta:
+          id: req_d62fd807452548e28b0ebd54ff6b1222
+          created: 1763904433803
+          modified: 1763915040111
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433803
+        method: POST
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ base_url }}/shoppingList/SHOPPING_LIST_ID/items/ITEM_ID/uncheck"
+        name: item/uncheck
+        meta:
+          id: req_fb303003aaa84de389169d1a6304dbfb
+          created: 1763904433804
+          modified: 1763915025388
+          isPrivate: false
+          description: ""
+          sortKey: -1763904433804
+        method: POST
+        headers:
+          - name: Authorization
+            value: Bearer {{ token }}
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    headers:
+      - name: Content-Type
+        value: application/json
+        description: ""
+        disabled: false
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_0fb23d7e7130c54dcc7ae429f609ae730a7db221
+    created: 1763904433807
+    modified: 1763904433807
+environments:
+  name: Base Environment
+  meta:
+    id: env_5f001e01a8f04900bd73f6ee9dacfe7e
+    created: 1763904433790
+    modified: 1763910768950
+    isPrivate: false
+  data:
+    base_url: http://localhost:3000
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTIzMjFlNjBkN2I1YmJhN2E2N2Q1MGYiLCJlbWFpbCI6ImVwaWNVc2VyQGJsYWJsYS5jeiIsInByb2ZpbGUiOiJVc2VyIiwiaWF0IjoxNzYzOTEwMzI5LCJleHAiOjE3NjM5OTY3Mjl9.hA9u8ATcr1O-Vi_rXhyUzN_G9BegD5JmcD-2W245v6k
